@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         leading: const BackButton(), // Mũi tên "Back" trên tiêu đề
         title: const Text("Đăng Nhập"),
       ),

@@ -1,8 +1,7 @@
-import 'package:doanchuyende/Screen/Calls.dart';
-import 'package:doanchuyende/Screen/Chats.dart';
-import 'package:doanchuyende/Screen/Diary.dart';
-import 'package:doanchuyende/Screen/Person.dart';
+
 import 'package:flutter/cupertino.dart';
+
+import '../../Const/page.dart';
 
 class HomePage extends StatelessWidget{
   HomePage({Key? key}) : super(key: key);

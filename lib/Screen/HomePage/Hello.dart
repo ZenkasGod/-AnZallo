@@ -1,6 +1,7 @@
-import 'package:doanchuyende/Screen/Login/RegisterAccount.dart';
+
 import 'package:flutter/material.dart';
-import 'LoginSceen.dart';
+import '../../Const/page.dart';
+import '../AuthPage/LoginSceen.dart';
 
 class Hello extends StatelessWidget {
   const Hello({super.key});

@@ -21,6 +21,7 @@ class RequestFriendState extends State<RequestFriend>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: const Text('Lời mời kết bạn',
           style:TextStyle(fontSize: 16),
         ),

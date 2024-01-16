@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doanchuyende/Screen/Login/Hello.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'Const/page.dart';
 
 const bool USE_EMULATOR = true;
 
@@ -26,9 +26,9 @@ Future _connectToFirebaseEmulator() async {
   final localHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
 
   FirebaseFirestore.instance.settings = Settings(
-    host: "$localHost:$fireStorePort",
-    sslEnabled: false,
-    persistenceEnabled: false);
+      host: "$localHost:$fireStorePort",
+      sslEnabled: false,
+      persistenceEnabled: false);
 
   await FirebaseAuth.instance.useEmulator("http://$localHost:$authPort");
 }
@@ -37,12 +37,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      home:Hello(),
+    return const CupertinoApp(
+      home: Hello(),
       theme: CupertinoThemeData(
-          brightness: Brightness.light,
-          primaryColor: Colors.blue),
-
+          brightness: Brightness.light, primaryColor: Colors.blue),
       localizationsDelegates: [
         DefaultMaterialLocalizations.delegate,
         DefaultCupertinoLocalizations.delegate,
@@ -51,5 +49,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

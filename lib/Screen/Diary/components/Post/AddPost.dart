@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 
 class AddPost extends StatefulWidget {
-  const AddPost({super.key});
+  const AddPost({Key? key});
 
   @override
   _AddPostState createState() => _AddPostState();
 }
 
 class _AddPostState extends State<AddPost> {
-  bool isLiked = false;
-  int likeCount = 0;
+  List<Post> posts = [
+    Post(username: "Huy Huynh", imageURL: "https://cdn.oneesports.vn/cdn-data/sites/4/2023/08/One-Piece-Gear-5.jpg"),
+    Post(username: "Le Bao", imageURL: "https://i.pinimg.com/originals/3a/3c/ab/3a3cabd94347cf64dade52882308c780.jpg"),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: posts.map((post) => buildPost(post)).toList(),
+    );
+  }
+
+  Widget buildPost(Post post) {
     return Container(
-      height: 480,
+      height: 380,
       margin: const EdgeInsets.only(top: 10),
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
@@ -31,10 +40,9 @@ class _AddPostState extends State<AddPost> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 10, top: 10),
-                    child: const Text(
-                      "Huy Huynh",
-                      style: TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.w500),
+                    child: Text(
+                      post.username,
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ],
@@ -53,8 +61,7 @@ class _AddPostState extends State<AddPost> {
               maxHeight: 350.0,
               maxWidth: MediaQuery.of(context).size.width,
             ),
-            child: Image.network(
-                "https://cdn.oneesports.vn/cdn-data/sites/4/2023/08/One-Piece-Gear-5.jpg"),
+            child: Image.network(post.imageURL),
           ),
           Row(
             mainAxisSize: MainAxisSize.max,
@@ -63,14 +70,14 @@ class _AddPostState extends State<AddPost> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    isLiked = !isLiked;
-                    likeCount += isLiked ? 1 : -1;
+                    post.isLiked = !post.isLiked;
+                    post.likeCount += post.isLiked ? 1 : -1;
                   });
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 10, right: 8.0),
                   alignment: Alignment.center,
-                  height: 27,
+                  height: 35,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -79,7 +86,7 @@ class _AddPostState extends State<AddPost> {
                         width: 30,
                         child: Icon(
                           Icons.favorite,
-                          color: isLiked ? Colors.pink : Colors.grey,
+                          color: post.isLiked ? Colors.pink : Colors.grey,
                         ),
                       ),
                       const SizedBox(width: 5),
@@ -92,11 +99,11 @@ class _AddPostState extends State<AddPost> {
                               'Yêu thích',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: isLiked ? Colors.pink : Colors.grey,
+                                color: post.isLiked ? Colors.pink : Colors.grey,
                               ),
                             ),
                             Text(
-                              '$likeCount',
+                              '${post.likeCount}',
                               style: const TextStyle(
                                 fontSize: 10,
                                 color: Colors.grey,
@@ -137,4 +144,13 @@ class _AddPostState extends State<AddPost> {
       ),
     );
   }
+}
+
+class Post {
+  final String username;
+  final String imageURL;
+  bool isLiked;
+  int likeCount;
+
+  Post({required this.username, required this.imageURL, this.isLiked = false, this.likeCount = 0});
 }
