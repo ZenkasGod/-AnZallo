@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Post/AddPost.dart';
-import 'Post/MyAppBar.dart';
-import 'Post/NewPost.dart';
-import 'Post/stories.dart';
+
+import '../../Const/page.dart';
+
 
 class Diary extends StatelessWidget {
   const Diary({Key? key}) : super(key: key);

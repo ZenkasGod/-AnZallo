@@ -1,6 +1,7 @@
-import 'package:doanchuyende/Screen/Login/verify_number.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../Const/page.dart';
 
 class RegisterAccount extends StatefulWidget {
   const RegisterAccount({super.key});
@@ -20,6 +21,7 @@ class _RegisterAccountState extends State<RegisterAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: const Text(
           'Tạo tài khoản',
           style: TextStyle(fontSize: 16),

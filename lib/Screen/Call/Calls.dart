@@ -1,7 +1,9 @@
-import 'package:doanchuyende/Screen/RequestFriend.dart';
+import 'package:doanchuyende/Screen/Call/components/RequestFriend.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../Widgets/search_screen.dart';
 
 
 class Calls extends StatelessWidget {
@@ -23,22 +25,46 @@ class Calls extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: TextField(
-            decoration: InputDecoration(
-              hintText: "Tìm kiếm",
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-              prefixIcon: const Icon(Icons.search, color: Colors.white),
-            ),
-            style: const TextStyle(color: Colors.white),
+          backgroundColor: Colors.blue,
+          title: Row(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.search),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SearchScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    const Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Tìm kiếm...',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: Colors.grey),
+                        ),
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.person_add_alt_1),
+                color: Colors.white,
+                onPressed: () {
+                  // Handle add person button
+                },
+              ),
+            ],
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.person_add),
-              onPressed: () {
-                // Xử lý khi nhấn vào icon +
-              },
-            ),
-          ],
         ),
         body: SafeArea( // Add SafeArea here
           child: Column(
